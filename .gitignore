@@ -1,0 +1,11 @@
+# Sublime Text
+*.sublime-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.mo
+*.pot
+
+# party
+__partyout__/

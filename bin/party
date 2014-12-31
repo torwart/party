@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+
+# Copyright 2014 Jan Kowalewicz and contributors. All rights reserved.
+# The source code is governed by an MIT X11-License which can be found
+# in the root directory.
+
+import os
+import sys
+import getopt
+import shutil
+import fileinput
+
+class _partyfile():
+	def _init():
+		# creates an new partyfile
+		pfile = open('partyfile.py', 'a')
+		tmplt = '''#!=party
+
+from party_plugins import PLUGIN_NAME
+
+task def sample_task():
+	pass
+
+def runTasks():
+	sample_task()
+		'''
+		pfile.write(tmplt)
+		pfile.close()
+
+	def _translate():
+		# this function will translate an partyfile.
+		# to make it faster we will create an copy of
+		# the partyfile with the name _party_out.
+		# the file will be translated and executed.
+		shutil.copy2('partyfile.py', '_party_out.py')
+		for l in fileinput.input('_party_out.py', inplace=True):
+			print(l.replace('task def', 'def'), end='')
+		for hl in fileinput.input('_party_out.py', inplace=True):
+			print(hl.replace('#!=party', '# converted. DO NOT MODIFY!'))
+		for ml in fileinput.input('_party_out.py', inplace=True):
+			print(ml.replace("def runTasks():", "if __name__ == '__main__':"))
+		os.system('python _party_out.py')
+		os.remove('_party_out.py')
+
+class cliopts():
+	def mrun(argv):
+		try:
+			opts, args = getopt.getopt(argv, "iuh:v", ["init", "update", "vhelp"])
+		except getopt.GetoptError:
+			print("invalid command.")
+			sys.exit(2)
+		for opt, arg in opts:
+			if opt in ("-i", "--init"):
+				try:
+					_partyfile._init()
+				except:
+					print("error creating partyfile in this directory.")
+				finally:
+					print("created partyfile.")
+			elif opt == '-v':
+				print("party0.1\nyou can update by running '--update'")
+			elif opt in ("-u", "--update"):
+				print("---")
+
+if __name__ == '__main__':
+	try:
+		_partyfile._translate();
+	except:
+		# currently this will be deactivated if an partyfile
+		# exists.
+		cliopts.mrun(sys.argv[1:])

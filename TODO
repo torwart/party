@@ -1,0 +1,23 @@
+TODO LIST FOR 1.0
+------------------
+
+[ ] = todo
+[x] = done
+[<->] = work in progress
+
+[ ] add terminal colors for a better look on the eyes
+[ ] add more options to the homebrew client
+[ ] allow user decide between wget or curl
+[x] distribute as site-package (for plugins)
+[ ] print when git needs to be installed first
+[ ] allow user to enable different features on different platforms
+	like: if system -> OSX then brewClient.install(....)
+[x] create an apt-get client (over plugin?)
+[ ] fill the docs
+[x] create a windows installer (over python script?)
+[ ] create general installer (win32, unix, darwin etc.) (over shell script?)
+[<->] automatically write into PATH and site-packages (over shell script?)
+[ ] better error handling
+[ ] write an updater
+
+more can be discussed and will added!

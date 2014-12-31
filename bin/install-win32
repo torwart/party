@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+# Copyright 2014 Jan Kowalewicz and contributors. All rights reserved.
+# The source code is governed by an MIT X11-License which can be found
+# in the root directory.
+
+import os
+import sys
+import shutil
+
+def CreateSitePackagesFolder():
+	os.system('cd c://python34/lib/site-packages && mkdir party_plugins')
+
+def CopyPlugins():
+	shutil.copy2('../plugins/git.py', 'c://python34/lib/site-packages/party_plugins')
+	shutil.copy2('../plugins/brew.py', 'c://python34/lib/site-packages/party_plugins')
+	shutil.copy2('../plugins/apt.py', 'c://python34/lib/site-packages/party_plugins')
+	# todo..
+
+if __name__ == '__main__':
+	try:
+		CreateSitePackagesFolder()
+		CopyPlugins()
+		print("inf: INSTALLED SUCCESSFULLY AND COPIED PLUGINS!")
+		print("DON'T FORGET TO ADD THE BIN DIRECTORY TO YOUR PATH! OTHERWISE PARTY WILL NOT WORK.")
+	except:
+		print("err: INSTALLATION ABORTED BY ABOVE ERROR.")
