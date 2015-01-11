@@ -7,7 +7,7 @@ TODO LIST FOR 1.0
 
 [ ] add terminal colors for a better look on the eyes
 [ ] add more options to the homebrew client
-[ ] allow user decide between wget or curl
+[x] allow user decide between wget or curl
 [x] distribute as site-package (for plugins)
 [ ] print when git needs to be installed first
 [ ] allow user to enable different features on different platforms
