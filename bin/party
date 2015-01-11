@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
-# Copyright 2014 Jan Kowalewicz and contributors. All rights reserved.
+# Copyright 2014-2015 Jan Kowalewicz and contributors. All rights reserved.
 # The source code is governed by an MIT X11-License which can be found
 # in the root directory.
 
 import os
 import sys
-import getopt
 import shutil
 import fileinput
+import argparse
 
 class _partyfile():
 	def _init():
@@ -42,30 +42,34 @@ def runTasks():
 		os.system('python _party_out.py')
 		os.remove('_party_out.py')
 
-class cliopts():
-	def mrun(argv):
-		try:
-			opts, args = getopt.getopt(argv, "iuh:v", ["init", "update", "vhelp"])
-		except getopt.GetoptError:
-			print("invalid command.")
-			sys.exit(2)
-		for opt, arg in opts:
-			if opt in ("-i", "--init"):
-				try:
-					_partyfile._init()
-				except:
-					print("error creating partyfile in this directory.")
-				finally:
-					print("created partyfile.")
-			elif opt == '-v':
-				print("party0.1\nyou can update by running '--update'")
-			elif opt in ("-u", "--update"):
-				print("---")
+def cli():
+	p = argparse.ArgumentParser(description='Python task runner')
+
+	p.add_argument('-r', help='runs an partyfile', action='store_true')
+	p.add_argument('-v', help='shows version informations', action='store_true')
+	p.add_argument('-u', help='searches for newer versions of party', action='store_true')
+	p.add_argument('-i', help='creates an new partyfile in the current directory', action='store_true')
+
+	a = p.parse_args()
+
+	if a.r:
+		_partyfile._translate()
+
+	elif a.v:
+		print("party version 0.1\nyou can update by running -u")
+
+	elif a.u:
+		print("this is work in progress.")
+
+	elif a.i:
+		_partyfile._init()
+
+	else:
+		print("you'll need to add an option.")
 
 if __name__ == '__main__':
 	try:
-		_partyfile._translate();
+		cli()
+
 	except:
-		# currently this will be deactivated if an partyfile
-		# exists.
-		cliopts.mrun(sys.argv[1:])
+		print("no partyfile found.")

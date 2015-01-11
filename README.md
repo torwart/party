@@ -2,7 +2,7 @@
 
 > The python task runner
 
-``party`` is an task runner written in python for python. It automates all the steps which the users need to do, like installing components, updating dependencies or getting the latest source. Also its very extensible and you can [create](https://github.com/torwart/party/blob/master/docs/plugins/Write-a-Plugin.md) and [install](https://torwart.github.io/party-registry) plugins. You can view the [documentation](https://github.com/torwart/party/blob/master/docs) for more informations.
+``party`` is an task runner written in python for python. It automates all the steps which the users need to do, like installing components, updating dependencies or getting the latest source. Also its very extensible and you can [create](https://github.com/torwart/party/blob/master/docs/plugins/Write-a-Plugin.md) and install plugins. You can view the [documentation](https://github.com/torwart/party/blob/master/docs) for more informations.
 
 ![preview image](http://i.imgur.com/6p5zsqV.png)
 
@@ -17,13 +17,15 @@ first (_installer script on Windows supports only Python 3.4.x_).
 
 #### Windows
 
-Start the command prompt (or use Git Bash) and run the following:
+Download one of the [latest releases](https://github.com/torwart/party/releases), and extract the ZIP/TAR package.
+Fire up an command prompt and run this:
 
-    $ git clone https://github.com/torwart/party.git
-    $ cd party/bin
-    $ python install-win32
+```sh
+$ cd bin
+$ python install-win32
+```
 
-If you receive an ``INSTALLED SUCCESSFULLY AND COPIED PLUGINS!``, you can be 100% sure that ``party`` is installed correctly. **But dont't forget to add the ``bin`` directory to your PATH!**
+if you receive 'everything fine.', you can be sure that ``party`` is installed. **You'll need to add the bin directory to your PATH manually!**
 
 _If you use an older version of Python you can follow the steps for Linux/OSX to manual install party!_
 
@@ -38,14 +40,13 @@ _Currently I am not able to run an Linux or OSX system and this is a manual way 
 5. Add the ``bin`` directory to your **PATH**
 6. _not required:_ on some systems you'll need to reboot
 
-Now you can test if ``party`` was successfully installed. This can be done using the ``Python command line``, fire it up and run this:
+Now you can test if ``party`` was successfully installed. This can be done by running this in terminal:
 
-```py
->>> from party_plugins import git
->>> client = git.gitClient()
+```sh
+$ party -v
 ```
 
-If this return no errors, you can be sure that you've installed ``party`` on your system.
+If this shows you the version informations, everything works fine.
 
 ## Sample ``partyfile.py``
 
@@ -77,6 +78,7 @@ These plugins are shipped with ``party``:
 - [.git](https://github.com/torwart/party/blob/master/plugins/git.py): an easy to use git client for your partyfiles
 - [.brew](https://github.com/torwart/party/blob/master/plugins/brew.py): an easy to use homebrew client for your partyfiles (**OSX only**)
 - [.apt](https://github.com/torwart/party/blob/master/plugins/apt.py): an easy to use apt-get client for your partyfiles (**UNIX only**)
+- [.get](https://github.com/torwart/party/blob/master/plugins/git.py): an easy to use download client for your partyfiles
 
 ## Known Issues
 

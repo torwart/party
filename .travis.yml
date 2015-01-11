@@ -3,11 +3,9 @@ language: python
 python: 3.4.2
 
 install:
-	- sudo apt-get install python3.4 python3.4-dev git
-	- cd bin
-	- python install
+  - sudo apt-get install python3.4 python3.4-dev git
 
 script:
-	- cd tests
-	- python plugin_tests.py
-	- python plugin_tests2.py
+  - cd tests
+  - python plugin_tests.py
+  - python plugin_tests2.py

@@ -1,3 +1,4 @@
 'lib/git.py',
 'lib/brew.py',
-'lib/apt.py'
+'lib/apt.py',
+'lib/get.py'

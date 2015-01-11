@@ -19,10 +19,6 @@ Fire up Sublime text editor (or whatever text editor you use) and paste this (co
 
 import os
 import sys
-import party
-# or use
-sys.path.insert(0, '/path/to/party/installation')
-# and then use 'import party'
 
 # create a new class yourClassName will be represent in the partyfile like gitClient or brewClient
 class yourClassName():
