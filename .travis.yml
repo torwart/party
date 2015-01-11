@@ -5,4 +5,3 @@ python: 3.4.2
 script:
   - cd tests
   - python plugin_tests.py
-  - python plugin_tests2.py

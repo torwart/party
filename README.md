@@ -2,6 +2,8 @@
 
 > The python task runner
 
+![travis](https://api.travis-ci.org/torwart/party.svg)
+
 ``party`` is an task runner written in python for python. It automates all the steps which the users need to do, like installing components, updating dependencies or getting the latest source. Also its very extensible and you can [create](https://github.com/torwart/party/blob/master/docs/plugins/Write-a-Plugin.md) and install plugins. You can view the [documentation](https://github.com/torwart/party/blob/master/docs) for more informations.
 
 ![preview image](http://i.imgur.com/6p5zsqV.png)
