@@ -59,7 +59,9 @@ def cli():
 		print("party version 0.1\nyou can update by running -u")
 
 	elif a.u:
-		print("this is work in progress.")
+		# WARNING: this only works for cloned repositories
+		os.system("cd .. && git pull")
+		# TODO: add updater for non-cloned
 
 	elif a.i:
 		_partyfile._init()

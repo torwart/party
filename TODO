@@ -18,6 +18,6 @@ TODO LIST FOR 1.0
 [ ] create general installer (win32, unix, darwin etc.) (over shell script?)
 [<->] automatically write into PATH and site-packages (over shell script?)
 [ ] better error handling
-[ ] write an updater
+[<->] write an updater
 
 more can be discussed and will added!
